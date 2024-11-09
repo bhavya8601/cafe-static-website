@@ -1,11 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: cafestatic-rollout
-  labels:
-    app: cafestatic
+  name: php-mysql-rollout
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: cafestatic
@@ -15,7 +13,7 @@ spec:
         app: cafestatic
     spec:
       containers:
-      - name: cafestatic
+      - name: php-container
         image: sreedocker123/cafewebimage:final
         ports:
         - containerPort: 80
@@ -24,7 +22,9 @@ spec:
       steps:
       - setWeight: 20
       - pause: {duration: 10s}
-      - setWeight: 50
+      - setWeight: 40
+      - pause: {duration: 10s}
+      - setWeight: 60
       - pause: {duration: 10s}
       - setWeight: 80
       - pause: {duration: 10s}
