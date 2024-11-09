@@ -1,9 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: php-mysql-rollout
+  name: php-mysql-rollout123
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app: cafestatic
